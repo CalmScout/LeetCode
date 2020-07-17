@@ -4,17 +4,11 @@ which has the largest sum and return its sum.
 """
 class Solution:
     def maxSubArray(self, nums):
-        """
-        Kadane's algorithm
-        :type nums: List[int]
-        :rtype: int
-        """
-        max_ending_here = max_so_far = nums[0]
-        for el in nums[1:]:
-            max_ending_here = max(max_ending_here + el, el)
-            max_so_far = max(max_ending_here, max_so_far)
-        return max_so_far
-
+        dp = [0] * len(nums)
+        dp[0] = nums[0]
+        for i in range(1, len(nums)):
+            dp[i] = max(nums[i], dp[i-1] + nums[i])
+        return max(dp)
 
 
 if __name__ == "__main__":
