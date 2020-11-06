@@ -18,11 +18,11 @@ class Solution:
 
 
 if __name__ == "__main__":
-    # arr = [85]
-    # pieces = [[85]]
-    # out = True
-    # res = Solution().canFormArray(arr, pieces)
-    # assert out == res, (out, res)
+    arr = [85]
+    pieces = [[85]]
+    out = True
+    res = Solution().canFormArray(arr, pieces)
+    assert out == res, (out, res)
 
     arr = [15, 88]
     pieces = [[88], [15]]
