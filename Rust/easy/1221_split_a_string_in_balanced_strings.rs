@@ -5,8 +5,9 @@ impl Solution {
     pub fn balanced_string_split(s: String) -> i32 {
         let mut x: i32 = 0;
         let mut split_count: i32 = 0;
+        let s_bytes = s.as_bytes();
         for idx in 0..s.len() {
-            if s[idx] == 'R' {
+            if s_bytes[idx] as char == 'R' {
                 x += 1;
             } else {
                 x -= 1;
