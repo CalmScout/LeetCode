@@ -17,7 +17,7 @@ from typing import List
 class Solution:
     def canPlaceFlowers(self, flowerbed: List[int], n: int) -> bool:
         if flowerbed == [0]: return n <= 1
-        if flowerbed == [1]: return False
+        if flowerbed == [1]: return n == 0
         remains_to_plant = n
         new_flowerbed = [el for el in flowerbed]
         for idx in range(len(flowerbed)):
