@@ -11,21 +11,45 @@ another array. You must do this by modifying the input array in-place with O(1)
 extra memory.
 """
 from typing import List
-import numpy as np
 
 
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
-        pass
+        k = len(nums)
+        x = nums[0]
+        # first go through the array and replace duplicates with None
+        for i in range(1, k):
+            if nums[i] == x:
+                nums[i] = None
+            else:
+                x = nums[i]
+        # clean up the array from np.inf in-place
+        i = 0
+        while i < k:
+            if nums[i] is None:
+                nums.pop(i)
+                k -= 1
+            else:
+                i += 1
+        return k
 
 
 if __name__ == "__main__":
+    nums = [1, 2, 3]
+    out = 3
+    res = Solution().removeDuplicates(nums)
+    assert res == out
+    assert nums[:res] == [1, 2, 3]
+
     nums = [1, 1, 2]
     out = 2
     res = Solution().removeDuplicates(nums)
     assert res == out
+    assert nums[:res] == [1, 2]
 
-    # nums = [0,0,1,1,1,2,2,3,3,4]
-    # out = 5
-    # res = Solution().removeDuplicates(nums)
-    # assert res == out
+    nums = [0,0,1,1,1,2,2,3,3,4]
+    out = 5
+    res = Solution().removeDuplicates(nums)
+    assert res == out
+    assert nums[:res] == [0,1,2,3,4]
+
